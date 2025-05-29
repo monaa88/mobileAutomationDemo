@@ -12,6 +12,15 @@ describe("Android demo activities", () => {
   });
 
   it("vertical scrolling", async () => {
-    //Access acitivity
+    await $("~App").click();
+    await $("~Activity").click();
+
+    await $(
+      'android=new UiScrollable(new UiSelector().scrollable(true)).scrollTextToView("Secure Surfaces")'
+    );
+    await expect($("~Secure Surfaces")).toBeDisplayed();
+    await $("~Secure Surfaces").click();
+
+    await expect($("~Secure Dialog")).toExist();
   });
 });
